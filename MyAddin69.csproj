@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72AF491C-646C-40C9-AD5C-A1DE24C4BE5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyAddin69</RootNamespace>
+    <AssemblyName>MyAddin69</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <StartupObject>
+    </StartupObject>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MyAddin69.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-adx94|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AdxFolder>ADX9.4</AdxFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-adx100|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AdxFolder>ADX10.0</AdxFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.Vbe.Interop.dll">
+      <HintPath>Interops\Microsoft.Vbe.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Office.dll">
+      <HintPath>Interops\Office.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook.dll">
+      <HintPath>Interops\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AddinExpress.MSO.2005, Version=10.0.4700.0, Culture=neutral, PublicKeyToken=4416dd98f0861965, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'Debug-adx100|AnyCPU'">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>ADX10.0\AddinExpress.MSO.2005.dll</HintPath>
+    </Reference>
+    <Reference Include="AddinExpress.OL.2005, Version=10.0.4700.0, Culture=neutral, PublicKeyToken=e69a7e0f3592d2b8, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'Debug-adx100|AnyCPU'">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>ADX10.0\AddinExpress.OL.2005.dll</HintPath>
+    </Reference>
+    <Reference Include="AddinExpress.MSO.2005, Version=9.4.4644.0, Culture=neutral, PublicKeyToken=4416dd98f0861965, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'Debug-adx94|AnyCPU'">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>ADX9.4\AddinExpress.MSO.2005.dll</HintPath>
+    </Reference>
+    <Reference Include="AddinExpress.OL.2005, Version=9.4.4644.0, Culture=neutral, PublicKeyToken=e69a7e0f3592d2b8, processorArchitecture=MSIL" Condition="'$(Configuration)|$(Platform)' == 'Debug-adx94|AnyCPU'">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>ADX9.4\AddinExpress.OL.2005.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Loader\adxloader.dll" />
+    <Content Include="Loader\adxloader64.dll" />
+    <None Include="Loader\adxloader.dll.manifest" />
+    <!--<None Include="MyAddin69.snk" /> -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddinModule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AddinModule.Designer.cs">
+      <DependentUpon>AddinModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BottombarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BottombarForm.Designer.cs">
+      <DependentUpon>BottombarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SidebarForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SidebarForm1.Designer.cs">
+      <DependentUpon>SidebarForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SidebarForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SidebarForm2.Designer.cs">
+      <DependentUpon>SidebarForm2.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddinModule.resx">
+      <DependentUpon>AddinModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BottombarForm.resx">
+      <DependentUpon>BottombarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SidebarForm1.resx">
+      <DependentUpon>SidebarForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SidebarForm2.resx">
+      <DependentUpon>SidebarForm2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>del $(TargetDir)*.* /q</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
